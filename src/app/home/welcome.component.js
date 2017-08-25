@@ -14,7 +14,6 @@ var WelcomeComponent = (function () {
 }());
 WelcomeComponent = __decorate([
     core_1.Component({
-        selector: 'app-home',
         templateUrl: './app/home/welcome.component.html'
     })
 ], WelcomeComponent);
