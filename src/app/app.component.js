@@ -9,15 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var auth_service_1 = require("./user/auth.service");
 var AppComponent = (function () {
-    function AppComponent(authService) {
+    function AppComponent(authService, router) {
         this.authService = authService;
+        this.router = router;
         this.pageTitle = 'Acme Product Management';
     }
     AppComponent.prototype.logOut = function () {
         this.authService.logout();
-        console.log('Log out');
+        //console.log('Log out');
+        this.router.navigateByUrl('/welcome');
     };
     return AppComponent;
 }());
@@ -26,7 +29,7 @@ AppComponent = __decorate([
         selector: 'pm-app',
         templateUrl: './app/app.component.html'
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

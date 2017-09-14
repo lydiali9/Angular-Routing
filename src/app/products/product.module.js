@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var product_list_component_1 = require("./product-list.component");
 var product_detail_component_1 = require("./product-detail.component");
 var product_edit_component_1 = require("./product-edit.component");
@@ -20,7 +21,10 @@ var ProductModule = (function () {
 ProductModule = __decorate([
     core_1.NgModule({
         imports: [
-            shared_module_1.SharedModule
+            shared_module_1.SharedModule,
+            router_1.RouterModule.forChild([
+                { path: 'products', component: product_list_component_1.ProductListComponent },
+            ])
         ],
         declarations: [
             product_list_component_1.ProductListComponent,

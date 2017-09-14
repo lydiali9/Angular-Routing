@@ -7,29 +7,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var login_component_1 = require("./login.component");
-var auth_service_1 = require("./auth.service");
-var shared_module_1 = require("../shared/shared.module");
-var UserModule = (function () {
-    function UserModule() {
+var welcome_component_1 = require("./home/welcome.component");
+var page_not_found_component_1 = require("./page-not-found.component");
+var ROUTES = [
+    { path: 'welcome', component: welcome_component_1.WelcomeComponent },
+    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+    { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
     }
-    return UserModule;
+    return AppRoutingModule;
 }());
-UserModule = __decorate([
+AppRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
-            shared_module_1.SharedModule,
-            router_1.RouterModule.forChild([
-                { path: 'login', component: login_component_1.LoginComponent }
-            ])
+            router_1.RouterModule.forRoot(ROUTES)
         ],
-        declarations: [
-            login_component_1.LoginComponent
-        ],
-        providers: [
-            auth_service_1.AuthService
-        ]
+        exports: [router_1.RouterModule]
     })
-], UserModule);
-exports.UserModule = UserModule;
-//# sourceMappingURL=user.module.js.map
+], AppRoutingModule);
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=app-routing.module.js.map
