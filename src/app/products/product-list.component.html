@@ -47,7 +47,7 @@
                                  [style.margin.px]="imageMargin">
                         </td>
                         <td><a [routerLink]="['/products', product.id]"
-                        [queryParams]="{filterBy: listFilter, showImage: showImage}">
+                        [queryParams]="{filterBy: listFilter ? listFilter : '', showImage: showImage}">
                             {{product.productName}}
                             </a>
                         </td>

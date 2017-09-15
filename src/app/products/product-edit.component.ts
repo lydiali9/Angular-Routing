@@ -22,27 +22,40 @@ export class ProductEditComponent implements OnInit{
                 private router: Router) { }
 
     ngOnInit(): void {
+        // 1 version
         //let id = +this.route.snapshot.params['id'];
         //this.getProduct(id);
-        this.route.params.subscribe(
-            params => {
-                let id = +params['id'];
-                this.getProduct(id);
-            }
-        );
+        
+        // second version
+        // this.route.params.subscribe(
+        //     params => {
+        //         let id = +params['id'];
+        //         this.getProduct(id);
+        //     }
+        // );
+        
+        // third version
+        // let product = this.route.snapshot.data['product'];
+        // this.onProductRetrieved(product);
+        
+        // fourth version
+        this.route.data.subscribe(data => {
+            this.onProductRetrieved(data['product']);
+        });
     }
 
-    getProduct(id: number): void {
-        this.productService.getProduct(id)
-            .subscribe(
-                (product: IProduct) => this.onProductRetrieved(product),
-                (error: any) => this.errorMessage = <any>error
-            );
-    }
+    // second version
+    // getProduct(id: number): void {
+    //     this.productService.getProduct(id)
+    //         .subscribe(
+    //             (product: IProduct) => this.onProductRetrieved(product),
+    //             (error: any) => this.errorMessage = <any>error
+    //         );
+    // }
 
     onProductRetrieved(product: IProduct): void {
         this.product = product;
-
+        debugger;
         if (this.product.id === 0) {
             this.pageTitle = 'Add Product';
         } else {
